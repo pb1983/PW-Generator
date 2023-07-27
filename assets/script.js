@@ -1,7 +1,7 @@
-// Assignment code here
+
 var generateBtn = document.querySelector("#generate");
 
-//Write password to the #password input
+
 
 let lowerAlphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
@@ -11,9 +11,9 @@ let numbersArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 let builtArray = [];
 
+let password = ""; //Why did I need to do this for it to eliminate the [object HTMLTestAreaElement] issue in the text box? Is there a cleaner way?
 
 
-// Get references to the #generate element
 
 function generatePassword() {
 
@@ -22,13 +22,14 @@ function generatePassword() {
   if (passwordLength < 8) {
   return "Your length must be longer than 8 characters";
 }  else if (passwordLength > 128) {
-    return "Your length must not exceed 120 characters";
+    return "Your length must not exceed 128 characters";
 }
   
   let upper = confirm("Do you want to include upper case letters?");
   let lower = confirm("Do you want to include lower case letters?");
   let numbers = confirm("Do you want to include numbers?");
 
+  //Does not feel 'DRY'. 
 
   if (upper && lower && numbers === true)  {
     builtArray = [...builtArray, ...lowerAlphabet, ...upperAlphabet, ...numbersArray];
@@ -61,13 +62,13 @@ function generatePassword() {
 
 } 
 
+//Why does it need to run twice?
+generatePassword()
 
-
-// generatePassword()
 
 // Write password to the #password input
 function writePassword() {
-  let password = generatePassword();
+  password = generatePassword();
   let passwordText = document.querySelector("#password");
 
   passwordText.value = password;
@@ -77,13 +78,3 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-
-
-
-//Ask user how many characters they want
-//ask user if they want lower case, upper case, and numbers
-//Create error message if they do not have enough characters, too many character, or do not select any uc or lc options
-//Be able to return the number of characters the user wants in their password with the options they selected (ucc lcc and numbers)
-  //Math.floor(Math.random()*builtArray.length) * passwordLength;
-
-   
