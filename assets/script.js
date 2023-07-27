@@ -11,7 +11,7 @@ let numbersArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 let builtArray = [];
 
-let password = ""; //Why did I need to do this for it to eliminate the [object HTMLTestAreaElement] issue in the text box? Is there a cleaner way?
+let password = ""; 
 
 
 
@@ -29,21 +29,20 @@ function generatePassword() {
   let lower = confirm("Do you want to include lower case letters?");
   let numbers = confirm("Do you want to include numbers?");
 
-  //Does not feel 'DRY'. 
 
-  if (upper && lower && numbers === true)  {
+  if (upper && lower && numbers)  {
     builtArray = [...builtArray, ...lowerAlphabet, ...upperAlphabet, ...numbersArray];
-  } else if (upper && lower === true) {
+  } else if (upper && lower) {
     builtArray = [...builtArray, ...upperAlphabet, ...lowerAlphabet];
-  } else if (upper && numbers === true) {
+  } else if (upper && numbers) {
     builtArray = [...builtArray, ...upperAlphabet, ...numbersArray];
-  } else if (lower && numbers === true) {
+  } else if (lower && numbers) {
     builtArray = [...builtArray, ...lowerAlphabet, ...numbersArray];
-  }  else if (upper === true) {
+  }  else if (upper) {
     builtArray = [...builtArray, ...upperAlphabet];
-  } else if (numbers === true) {
+  } else if (numbers) {
     builtArray = [...builtArray, ...numbersArray];
-  } else if (lower === true) {
+  } else if (lower) {
     builtArray = [...builtArray, ...lowerAlphabet];
   } else {
       return "You must select at least one type of input";
@@ -62,13 +61,13 @@ function generatePassword() {
 
 } 
 
-//Why does it need to run twice?
-generatePassword()
+password = generatePassword();
 
 
 // Write password to the #password input
 function writePassword() {
-  password = generatePassword();
+  // password = generatePassword();
+  console.log(password);
   let passwordText = document.querySelector("#password");
 
   passwordText.value = password;
