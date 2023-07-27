@@ -13,3 +13,4 @@
 
  ### URL and Screenshots:
  [URL] https://pb1983.github.io/PW-Generator/
+![Challenge 3](https://github.com/pb1983/PW-Generator/assets/25019626/dafab498-2dbe-4756-8216-aa585a9c670b)
